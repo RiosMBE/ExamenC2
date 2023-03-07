@@ -1,0 +1,36 @@
+<%-include('partials/encabezado.ejs'); %>
+<body>
+    <div class="container">
+        <nav class="">
+            <a href="#">Acerca de</a>
+            <a href="/views/PagoRecibo.ejs">Pago de Recibo</a>
+            <a href="#">Contactos</a>
+        </nav>
+
+        <label for="">Numero Recibo</label>
+        <input type="number" name="numRecibo" id="numRecibo">
+        <br>
+        <label for="">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="">Domicilio</label>
+        <input type="text" name="domicilio" id="domicilio">
+        <br>
+        <label for="">Tipo de Servicio</label>
+        <select name="servicio" id="servicio">
+            <option value="1">Domestico</option>
+            <option value="2">Comercial</option>
+            <option value="3">Industrial</option>
+        </select>
+        <br>
+        <label for="">Kilowatts Consumidos</label>
+        <input type="number" name="consumo" id="consumo">
+
+        <br>
+
+        <button type="submit" class="btn btn-outline-primary">Enviar Informacion</button>
+        <button type="submit" id="btnLimpiar" class="btn btn-outline-danger" onclick="btnlimpiar()">Limpiar</button>
+    </div>    
+</body>
+<%-include('partials/piePagina.ejs'); %>
+</html>
