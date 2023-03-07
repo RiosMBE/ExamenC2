@@ -1,35 +1,57 @@
 <%-include('partials/encabezado.ejs'); %>
 <body>
-    <div class="container">
+    <div class="container p-3 mb-2 bg-info text-dark">
         <nav class="">
             <a href="#">Acerca de</a>
             <a href="/views/PagoRecibo.ejs">Pago de Recibo</a>
             <a href="#">Contactos</a>
         </nav>
+        <form name="index" method="post">
+            <label for="">Numero Recibo</label>
+            <input type="number" name="numRecibo" id="numRecibo">
+            <br>
+            <label for="">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <br>
+            <label for="">Domicilio</label>
+            <input type="text" name="domicilio" id="domicilio">
+            <br>
+            <label for="">Tipo de Servicio</label>
+            <select name="servicio" id="servicio">
+                <option value="1">Domestico</option>
+                <option value="2">Comercial</option>
+                <option value="3">Industrial</option>
+            </select>
+            <br>
+            <label for="">Kilowatts Consumidos</label>
+            <input type="number" name="consumo" id="consumo">
+        
 
-        <label for="">Numero Recibo</label>
-        <input type="number" name="numRecibo" id="numRecibo">
-        <br>
-        <label for="">Nombre</label>
-        <input type="text" name="nombre" id="nombre">
-        <br>
-        <label for="">Domicilio</label>
-        <input type="text" name="domicilio" id="domicilio">
-        <br>
-        <label for="">Tipo de Servicio</label>
-        <select name="servicio" id="servicio">
-            <option value="1">Domestico</option>
-            <option value="2">Comercial</option>
-            <option value="3">Industrial</option>
-        </select>
-        <br>
-        <label for="">Kilowatts Consumidos</label>
-        <input type="number" name="consumo" id="consumo">
+            <br>
 
-        <br>
+            <button type="submit" class="btn btn-outline-primary">Enviar Informacion</button>
+            <button type="submit" id="btnLimpiar" class="btn btn-outline-danger" onclick="btnlimpiar()">Limpiar</button>
+        </form>
 
-        <button type="submit" class="btn btn-outline-primary">Enviar Informacion</button>
-        <button type="submit" id="btnLimpiar" class="btn btn-outline-danger" onclick="btnlimpiar()">Limpiar</button>
+        <%
+            let impuesto = 0;
+            let descuento = 0;
+            let subtotal = 0;
+            let preciof = 0;
+            let total = 0;
+
+            if(consumo <= 1000){
+                if(servicio==1) {
+                    subtotal = parseInt(consumo) * 1.80;
+                    impuesto = parseInt(subtotal) * .16;
+                    preciof = subtotal + impuesto;
+                }else if(servicio == 2 && consumo <=10000){
+                    subtotal = parseInt(consumo) * 2.5;
+                }
+            }
+
+            total = subtotal + impuesto - descuento;
+        %>
     </div>    
 </body>
 <%-include('partials/piePagina.ejs'); %>

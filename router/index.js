@@ -12,7 +12,7 @@ router.get("/index", (req, res)=>{
         servicio: req.query.servicio,
         consumo: req.query.consumo
     }
-    res.render('index.ejs', valores)
+    res.render('pagoRecibo.ejs', valores)
 })
 
 router.post("/index", (req, res)=>{
@@ -23,7 +23,7 @@ router.post("/index", (req, res)=>{
         servicio: req.body.servicio,
         consumo: req.body.consumo
     }
-    res.render('index.ejs', valores)
+    res.render('pagoRecibo.ejs', valores)
 })
 
 function btnLimpiar(){

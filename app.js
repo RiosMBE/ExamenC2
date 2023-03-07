@@ -12,12 +12,12 @@ app.engine('html', require('ejs').renderFile)
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(misRutas)
 
-const puerto = 603;
+const puerto = 4003;
 
 app.use((req, res, next) =>{
     res.status(404).sendFile(__dirname + '/public/error.html');
 })
 
 app.listen(puerto, ()=>{
-    console.log("iniciando puerto 603")
+    console.log("iniciando puerto 4003")
 })
