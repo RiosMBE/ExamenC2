@@ -6,30 +6,30 @@ module.exports = router;
 
 router.get("/index", (req, res)=>{
     const valores = {
-        numRecibo: req.query.numRecibo,
+        boleto: req.query.boleto,
         nombre: req.query.nombre,
         domicilio: req.query.domicilio,
-        servicio: req.query.servicio,
-        consumo: req.query.consumo
+        tipo: req.query.tipo,
+        consumo: req.query.consumo,
+        descontado: req.query.descontado,
+        descuento: req.query.descuento,
+        total: req.query.total,
+        subtotal: req.query.total
     }
-    res.render('pagoRecibo.ejs', valores)
+    res.render('index.ejs', valores)
 })
 
 router.post("/index", (req, res)=>{
     const valores = {
-        numRecibo: req.body.numRecibo,
+        boleto: req.body.boleto,
         nombre: req.body.nombre,
         domicilio: req.body.domicilio,
-        servicio: req.body.servicio,
-        consumo: req.body.consumo
+        tipo: req.body.tipo,
+        consumo: req.body.consumo,
+        descontado: req.body.descontado,
+        descuento: req.body.descuento,
+        total: req.body.total,
+        subtotal: req.body.total
     }
     res.render('pagoRecibo.ejs', valores)
 })
-
-function btnLimpiar(){
-    document.getElementById("numRecibo").value = "";
-    document.getElementById("nombre").value = "";
-    document.getElementById("domicilio").value = "";
-    document.getElementById("servicio").value = "";
-    document.getElementById("consumo").value = "";
-}

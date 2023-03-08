@@ -1,58 +1,51 @@
 <%-include('partials/encabezado.ejs'); %>
 <body>
-    <div class="container p-3 mb-2 bg-info text-dark">
-        <nav class="">
-            <a href="#">Acerca de</a>
-            <a href="/views/PagoRecibo.ejs">Pago de Recibo</a>
-            <a href="#">Contactos</a>
-        </nav>
-        <form name="index" method="post">
-            <label for="">Numero Recibo</label>
-            <input type="number" name="numRecibo" id="numRecibo">
-            <br>
-            <label for="">Nombre</label>
-            <input type="text" name="nombre" id="nombre">
-            <br>
-            <label for="">Domicilio</label>
-            <input type="text" name="domicilio" id="domicilio">
-            <br>
-            <label for="">Tipo de Servicio</label>
-            <select name="servicio" id="servicio">
-                <option value="1">Domestico</option>
-                <option value="2">Comercial</option>
-                <option value="3">Industrial</option>
-            </select>
-            <br>
-            <label for="">Kilowatts Consumidos</label>
-            <input type="number" name="consumo" id="consumo">
-        
+    <body style="background-color: aliceblue;">
+        <div class="container" style="background-color: lightblue; border: 2px black solid; padding: 10px; margin-top: 10px;">
+            <center>
+                <h1></h1>
+                <form action="/index" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Número de recibo:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="boleto" id="boleto" required="true">
+                        </div>
+                    </div>
 
-            <br>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Domicilio:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="domicilio" id="domicilio" required="true">
+                        </div>
+                    </div>
 
-            <button type="submit" class="btn btn-outline-primary">Enviar Informacion</button>
-            <button type="submit" id="btnLimpiar" class="btn btn-outline-danger" onclick="btnlimpiar()">Limpiar</button>
-        </form>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Tipo de servicio:</label>
+                        <div class="col-sm-10">
+                            <select name="tipo" id="tipo">
+                                <option value="1">Domestico</option>
+                                <option value="2">Comercial</option>
+                                <option value="3">Industrial</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <%
-            let impuesto = 0;
-            let descuento = 0;
-            let subtotal = 0;
-            let preciof = 0;
-            let total = 0;
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Kilowatts consumidos:</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="consumo" id="consumo" required="true">
+                        </div>
+                    </div>
 
-            if(consumo <= 1000){
-                if(servicio==1) {
-                    subtotal = parseInt(consumo) * 1.80;
-                    impuesto = parseInt(subtotal) * .16;
-                    preciof = subtotal + impuesto;
-                }else if(servicio == 2 && consumo <=10000){
-                    subtotal = parseInt(consumo) * 2.5;
-                }
-            }
+                    <br>
+                    <hr>
 
-            total = subtotal + impuesto - descuento;
-        %>
-    </div>    
+                    <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+                    <button type="reset" class="btn btn-primary mb-2"></button>
+                </form>
+            </center>
+        </div>
+    </body>  
+    <%-include('partials/piePagina.ejs'); %> 
 </body>
-<%-include('partials/piePagina.ejs'); %>
 </html>
