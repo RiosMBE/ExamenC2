@@ -2,11 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bodyparser = require("body-parser");
 
-module.exports = router;
-
 router.get("/index", (req, res)=>{
     const valores = {
-        boleto: req.query.boleto,
+        recibo: req.query.recibo,
         nombre: req.query.nombre,
         domicilio: req.query.domicilio,
         tipo: req.query.tipo,
@@ -16,12 +14,12 @@ router.get("/index", (req, res)=>{
         total: req.query.total,
         subtotal: req.query.total
     }
-    res.render('index.ejs', valores)
+    res.render('index.html', valores)
 })
 
 router.post("/index", (req, res)=>{
     const valores = {
-        boleto: req.body.boleto,
+        recibo: req.body.recibo,
         nombre: req.body.nombre,
         domicilio: req.body.domicilio,
         tipo: req.body.tipo,
@@ -31,5 +29,6 @@ router.post("/index", (req, res)=>{
         total: req.body.total,
         subtotal: req.body.total
     }
-    res.render('pagoRecibo.ejs', valores)
+    res.render('pagoRecibo.html', valores)
 })
+module.exports = router;

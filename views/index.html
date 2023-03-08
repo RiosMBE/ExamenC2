@@ -1,4 +1,4 @@
-<%-include('partials/encabezado.ejs'); %>
+<%-include('partials/encabezado.html'); %>
 <body>
     <body style="background-color: aliceblue;">
         <div class="container" style="background-color: lightblue; border: 2px black solid; padding: 10px; margin-top: 10px;">
@@ -8,7 +8,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Número de recibo:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="boleto" id="boleto" required="true">
+                            <input type="text" name="recibo" id="recibo" required="true">
                         </div>
                     </div>
 
@@ -41,11 +41,27 @@
                     <hr>
 
                     <button type="submit" class="btn btn-primary mb-2">Enviar</button>
-                    <button type="reset" class="btn btn-primary mb-2"></button>
+                    <button type="reset" class="btn btn-primary mb-2" onclick="Limpiar()">Limpiar</button>
                 </form>
             </center>
         </div>
     </body>  
-    <%-include('partials/piePagina.ejs'); %> 
+    <%-include('partials/piePagina.html'); %> 
 </body>
+
+<script>
+    function Limpiar(){
+        const recibo = document.getElementById("recibo");
+        const nombre = document.getElementById("nombre");
+        const domicilio = document.getElementById("domicilio");
+        const tipoServicio = document.getElementById("tipoServicio");
+        const KilloWattsConsumidos = document.getElementById("KilloWattsConsumidos");
+      
+        recibo.value="";
+        nombre.value="";
+        domicilio.value="";
+        tipoServicio.value="";
+        KilloWattsConsumidos.value="";
+    }
+</script>
 </html>
