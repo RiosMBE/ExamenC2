@@ -1,52 +1,65 @@
-<%-include('partials/encabezado.html'); %>
+<center>
+    <%-include('partials/encabezado.html'); %>
+</center>
+
 <body>
-    <body style="background-color: aliceblue;">
-        <div class="container" style="background-color: lightblue; border: 2px black solid; padding: 10px; margin-top: 10px;">
-            <center>
-                <h1></h1>
-                <form action="/index" method="post">
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Número de recibo:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="recibo" id="recibo" required="true">
-                        </div>
-                    </div>
+    <center>
+        <div class="container">
+            <nav class="navbar navbar-expend-lg navbar-light bg-dark">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a style="color: white;" class="nav-link" href="#">Acerca de</a>
+                        </li>
 
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Domicilio:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="domicilio" id="domicilio" required="true">
-                        </div>
-                    </div>
+                        <li class="nav-item">
+                            <a style="color: white;" class="nav-link" href="#">Pago de recibo</a>
+                        </li>
 
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Tipo de servicio:</label>
-                        <div class="col-sm-10">
-                            <select name="tipo" id="tipo">
-                                <option value="1">Domestico</option>
-                                <option value="2">Comercial</option>
-                                <option value="3">Industrial</option>
-                            </select>
-                        </div>
-                    </div>
+                        <li class="nav-item">
+                            <a style="color: white;" class="nav-link" href="#">Contactos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Kilowatts consumidos:</label>
-                        <div class="col-sm-10">
-                            <input type="number" name="consumo" id="consumo" required="true">
-                        </div>
-                    </div>
+            <br>
+            <br>
+
+            <div class="container">
+                <form action="/index" method="post" style="background-color: rgb(245, 234, 79);">
+                    
+                    <label class="lead">Número de recibo:</label>
+                    <input style="width: 300px;" aria-label="amount (to the nearest dollar)" type="text" name="recibo" id="recibo" required="true">
+    
+
+                    <label for="" class="col-sm-2 col-form-label">Domicilio:</label>
+                    <input style="width: 300px;" aria-label="Amount (to the nearest dollar)" type="text" name="domicilio" id="domicilio" required="true">
+
+                    <label for="" class="lead">Tipo de servicio:</label>
+                    <select style="width: 300px;" class="form-control border-secondary" name="tipo" id="tipo">
+                        <option value="1">Domestico</option>
+                        <option value="2">Comercial</option>
+                        <option value="3">Industrial</option>
+                    </select>
 
                     <br>
-                    <hr>
+                    <br>
 
-                    <button type="submit" class="btn btn-primary mb-2">Enviar</button>
-                    <button type="reset" class="btn btn-primary mb-2" onclick="Limpiar()">Limpiar</button>
+                    <label for="" class="lead">Kilowatts consumidos:</label>
+                    <input style="width: 300px;" class="form-control" arial-label="Amount (to the nearest dollar)" type="number" name="consumo" id="consumo" required="true">
+    
+                    <br>
+                    <hr>
+    
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                    <button type="reset" class="btn btn-primary btn-lg btn-block" onclick="Limpiar()">Limpiar</button>
                 </form>
-            </center>
+            </div>
         </div>
-    </body>  
-    <%-include('partials/piePagina.html'); %> 
+    </center>
+    <br>  
+<%-include('partials/piePagina.html'); %> 
 </body>
 
 <script>

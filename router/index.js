@@ -31,4 +31,5 @@ router.post("/index", (req, res)=>{
     }
     res.render('pagoRecibo.html', valores)
 })
+
 module.exports = router;

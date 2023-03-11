@@ -1,89 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
+<center>
+    <%-include('partials/encabezado.html');%>
+</center>
 
-<%-include('partials/encabezado.html');%>
+<body>
+    <center>
+        <div class="container">
+            <nav class="navbar navbar-expend-lg navbar-light bg-dark">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a style="color: white;" class="nav-link" href="#">Acerca de</a>
+                        </li>
 
-<%
-kilos=consumo;
+                        <li class="nav-item">
+                            <a style="color: white;" class="nav-link" href="#">Pago de recibo</a>
+                        </li>
 
-if(tipo==1){
-    consumo=kilos * 1.08;
-    costo = 1.08;
-    tipo = "Domestico";
-}if(tipo==2){
-    consumo=kilos * 2.5;
-    costo = 2.5;
-    tipo = "Domercial";
-}if(tipo==3){
-    consumo=kilos * 3;
-    costo = 3;
-    tipo = "Industrial";
-}
+                        <li class="nav-item">
+                            <a style="color: white;" class="nav-link" href="#">Contactos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-subtotal = consumo;
-iva = subtotal * 0.16;
+            <br>
+            <br>
 
-if(consumo <= 1000){
-    descuento = 0.1;
-}else if(consumo > 1000 && consumo <= 10000){
-    descuento = 0.2;
-}else if(consumo > 10000){
-    descuento = 0.5;
-}
-descuento = subtotal * descuento;
-total = subtotal + parseInt(subtotal * 0.16) - (subtotal * descuento);
-%>
+            <div class="container" style="background-color: rgb(245, 234, 79);">
+                <%
+                    kilos=consumo;
 
-<body style="background-color: aquamarine;">
-    <div class="container" style="background-color: black; border: 2px black solid; padding: 10px; margin-top: 10px;">
+                    if(consumo <= 1000){
+                        descuento = 0.1;
+                    }else if(consumo > 1000 && consumo <= 10000){
+                        descuento = 0.2;
+                    }else if(consumo > 10000){
+                        descuento = 0.5;
+                    }
 
-        <table class="table table-hover table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Tipo de servicio</th>
-                    <th scope="col">Kilowatts</th>
-                    <th scope="col">Costo Kilowatts</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><%=nombre%></th>
-                    <td><%=tipo%></td>
-                    <td><%=kilos%></td>
-                    <td><%=costo%></td>
-                </tr>
+                    if(tipo==1){
+                        consumo=kilos * 1.08;
+                        costo = 1.08;
+                        tipo = "Domestico";
+                    }if(tipo==2){
+                        consumo=kilos * 2.5;
+                        costo = 2.5;
+                        tipo = "Domercial";
+                    }if(tipo==3){
+                        consumo=kilos * 3;
+                        costo = 3;
+                        tipo = "Industrial";
+                    }
 
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td>Subtotal:</td>
-                    <td><%=subtotal%></td>
-                </tr>
+                    subtotal = consumo;
+                    iva = subtotal * 0.16;
 
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td>Impuesto:</td>
-                    <td><%=iva%></td>
-                </tr>
+                    descontado = subtotal * descuento;
+                    total = subtotal + (subtotal * 0.16) - (subtotal * descuento);
+                %>
+            </div>
 
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td>Descuento:</td>
-                    <td><%=descontado%></td>
-                </tr>
+            <table id="tabla" class="table table-hover table-striped table-bordered border-secondary" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo de servicio</th>
+                        <th scope="col">Kilowatts</th>
+                        <th scope="col">Costo Kilowatts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><%=nombre%></th>
+                        <td><%=tipo%></td>
+                        <td><%=kilos%></td>
+                        <td><%=costo%></td>
+                    </tr>
 
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td>Total a pagar</td>
-                    <td><%=total%></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Subtotal:</td>
+                        <td><%=subtotal%></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Impuesto:</td>
+                        <td><%=iva%></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Descuento:</td>
+                        <td><%=descontado%></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td>Total a pagar</td>
+                        <td><%=total%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </center>
 </body>
 
 <script>
